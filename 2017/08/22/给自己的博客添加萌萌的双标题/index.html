@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="zh-CN" class="loading">
+<html lang="en" class="loading">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
-    <meta name="keywords" content="anthoney,"> 
+    
     <meta name="description" content="&amp;gt; 乡下人今天去了一趟赣州 吃了高贵的肯德基&amp;#x2F; 有一个穿工作服的妹子 真可爱
 前语Forked from theme yelee
 本文章只提供加入该功能的方法与源代码,源码已发布在我,"> 
@@ -38,9 +38,6 @@
 <link rel="stylesheet" href="/css/diaspora.css">
 
     <script>window.searchDbPath = "/search.xml";</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="loading">
@@ -88,17 +85,17 @@
 </ul>
 <h4 id="layout-x2F-partial"><a href="#layout-x2F-partial" class="headerlink" title="layout&#x2F;_partial"></a>layout&#x2F;_partial</h4><p>&#x2F;&#x2F; 以下需要修改或增加的文件除了*_config.yml<em>外都是在主题的</em>layout&#x2F;_partial*目录下</p>
 <h4 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h4><h5 id="head-ejs"><a href="#head-ejs" class="headerlink" title="head.ejs"></a>head.ejs</h5><p>在<em>head.ejs</em>下加入以下代码</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;% if (theme.tab_title_change)&#123; %&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">     var OriginTitile = document.title;</span><br><span class="line">     var titleTime;</span><br><span class="line">     document.addEventListener(&#x27;visibilitychange&#x27;, function() &#123;</span><br><span class="line">         if (document.hidden) &#123;</span><br><span class="line">             document.title = &quot;&lt;%- theme.tab_title_change.left_tab_title %&gt;&quot;  OriginTitile;</span><br><span class="line">             clearTimeout(titleTime);</span><br><span class="line">         &#125;</span><br><span class="line">         else &#123;</span><br><span class="line">             document.title = &quot;&lt;%- theme.tab_title_change.return_tab_title %&gt;&quot;  OriginTitile;</span><br><span class="line">             titleTime = setTimeout(function() &#123;</span><br><span class="line">                 document.title = OriginTitile;</span><br><span class="line">             &#125;, 2000);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;% if (theme.tab_title_change)&#123; %&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">     var OriginTitile = document.title;</span><br><span class="line">     var titleTime;</span><br><span class="line">     document.addEventListener(&#x27;visibilitychange&#x27;, function() &#123;</span><br><span class="line">         if (document.hidden) &#123;</span><br><span class="line">             document.title = &quot;&lt;%- theme.tab_title_change.left_tab_title %&gt;&quot;  OriginTitile;</span><br><span class="line">             clearTimeout(titleTime);</span><br><span class="line">         &#125;</span><br><span class="line">         else &#123;</span><br><span class="line">             document.title = &quot;&lt;%- theme.tab_title_change.return_tab_title %&gt;&quot;  OriginTitile;</span><br><span class="line">             titleTime = setTimeout(function() &#123;</span><br><span class="line">                 document.title = OriginTitile;</span><br><span class="line">             &#125;, 2000);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
 
 <h5 id="after-footer-ejs"><a href="#after-footer-ejs" class="headerlink" title="after-footer.ejs"></a>after-footer.ejs</h5><p>在<em>after-footer</em>下加入以下代码</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;%- partial(&#x27;open-in-new-tab&#x27;, &#123;</span><br><span class="line">          global: theme.open_in_new.global</span><br><span class="line">      &#125;) %&gt;</span><br><span class="line">  &lt;%- partial(&#x27;tab-title-change&#x27;) %&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;%- partial(&#x27;open-in-new-tab&#x27;, &#123;</span><br><span class="line">          global: theme.open_in_new.global</span><br><span class="line">      &#125;) %&gt;</span><br><span class="line">  &lt;%- partial(&#x27;tab-title-change&#x27;) %&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <h5 id="tab-title-change-ejs"><a href="#tab-title-change-ejs" class="headerlink" title="tab-title-change.ejs"></a>tab-title-change.ejs</h5><p>新建<em>ejs</em>文件并更名为<em>tab-title-change.ejs</em>,文件内写入以下代码</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;% if (theme.tab_title_change.on) &#123; %&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var originTitle = document.title;</span><br><span class="line">        var titleTime;</span><br><span class="line">        document.addEventListener(&quot;visibilitychange&quot;, function() &#123;</span><br><span class="line">            if (document.hidden) &#123;</span><br><span class="line">                document.title = &quot;&lt;%- theme.tab_title_change.left_tab_title %&gt;&quot;  originTitle;</span><br><span class="line">                clearTimeout(titleTime);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                document.title = &quot;&lt;%- theme.tab_title_change.return_tab_title %&gt;&quot;  originTitle;</span><br><span class="line">                titleTime = setTimeout(function() &#123;</span><br><span class="line">                    document.title = originTitle;</span><br><span class="line">                &#125;, 2000);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.tab_title_change.on) &#123; %&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var originTitle = document.title;</span><br><span class="line">        var titleTime;</span><br><span class="line">        document.addEventListener(&quot;visibilitychange&quot;, function() &#123;</span><br><span class="line">            if (document.hidden) &#123;</span><br><span class="line">                document.title = &quot;&lt;%- theme.tab_title_change.left_tab_title %&gt;&quot;  originTitle;</span><br><span class="line">                clearTimeout(titleTime);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                document.title = &quot;&lt;%- theme.tab_title_change.return_tab_title %&gt;&quot;  originTitle;</span><br><span class="line">                titleTime = setTimeout(function() &#123;</span><br><span class="line">                    document.title = originTitle;</span><br><span class="line">                &#125;, 2000);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
 <p>保存，并将该<em>ejs</em>文件放入主题的<em>layout&#x2F;_partial</em>目录下</p>
 <h5 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h5><p>在主题的*_config*下增加以下描述，可选择功能开启(true)或关闭(false),以及自定义标题内容</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">tab_title_change:</span><br><span class="line">  on: true</span><br><span class="line">  left_tab_title: &#x27;￣へ￣死鬼去哪里啦！ &#x27;</span><br><span class="line">  return_tab_title: &#x27;(*´∇｀*) 咦，回来啦~ &#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tab_title_change:</span><br><span class="line">  on: true</span><br><span class="line">  left_tab_title: &#x27;￣へ￣死鬼去哪里啦！ &#x27;</span><br><span class="line">  return_tab_title: &#x27;(*´∇｀*) 咦，回来啦~ &#x27;</span><br></pre></td></tr></table></figure>
 
 <h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>接下里在<em>git bash</em>里直接执行<code>hexo g</code>,<code>hexo s</code>,在<em>localhost：4000</em>里就能看到啦~确认没有问题后就可以deploy(○｀ 3′○)</p>
 <p>效果如下<br><img src="http://ouzdgmi39.bkt.clouddn.com/chrome_2017-08-21_22-30-18.png"></p>
@@ -113,14 +110,6 @@
             </audio>
             
                 <ul id="audio-list" style="display:none">
-                    
-                        
-                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                        
-                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
                     
                 </ul>
             
