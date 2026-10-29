@@ -1,6 +1,7 @@
 ---
 title: 梦2019
 date: 2019-01-19 00:00:00
+cover: /images/posts/dream2019.jpg
 categories:
   - 生活
 tags:

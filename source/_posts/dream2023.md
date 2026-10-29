@@ -1,6 +1,7 @@
 ---
 title: 梦2023
 date: 2023-01-04 00:00:00
+cover: /images/posts/dream2023.jpg
 categories:
   - 生活
 tags:

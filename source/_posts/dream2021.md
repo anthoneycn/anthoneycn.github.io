@@ -1,6 +1,7 @@
 ---
 title: 梦2021
 date: 2021-03-13 00:00:00
+cover: /images/posts/dream2021.jpg
 categories:
   - 生活
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 梦2022
 date: 2022-01-05 00:00:00
+cover: /images/posts/dream2022.jpg
 categories:
   - 生活
 tags:

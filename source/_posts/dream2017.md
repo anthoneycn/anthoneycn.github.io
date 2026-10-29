@@ -1,6 +1,7 @@
 ---
 title: 梦2017
 date: 2017-11-18 00:00:00
+cover: /images/posts/dream2017.jpg
 categories:
   - 生活
 tags:

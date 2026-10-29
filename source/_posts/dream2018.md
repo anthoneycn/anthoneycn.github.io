@@ -1,6 +1,7 @@
 ---
 title: 梦2018
 date: 2018-01-05 00:00:00
+cover: /images/posts/dream2018.jpg
 categories:
   - 生活
 tags:
