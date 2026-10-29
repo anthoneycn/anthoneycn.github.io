@@ -1,7 +1,7 @@
 ---
 title: dream2024
 date: 2024-03-11 00:00:00
-cover: /images/posts/dream2024.jpg
+cover: /images/posts/dream2024.webp
 ---
 
 ![lEK6VVu.png](https://s2.loli.net/2023/02/12/K6l1zTAsYm4nVxu.png)##2024

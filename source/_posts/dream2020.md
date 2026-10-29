@@ -1,7 +1,7 @@
 ---
 title: 梦2020
 date: 2020-01-07 00:00:00
-cover: /images/posts/dream2020.jpg
+cover: /images/posts/dream2020.webp
 categories:
   - 生活
 tags:
