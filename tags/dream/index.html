@@ -35,6 +35,30 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     <script>window.searchDbPath = "/search.xml";</script>
+    <script>
+    /* 文章内图片懒加载：打开文章时动态注入的图才标记 lazy，首页首屏图不受影响 */
+    (function() {
+        function lazyImgs(root) {
+            var imgs = root.querySelectorAll('img');
+            for (var i = 0; i < imgs.length; i++) {
+                if (!imgs[i].getAttribute('data-lz')) {
+                    imgs[i].setAttribute('data-lz', '1');
+                    imgs[i].setAttribute('loading', 'lazy');
+                    imgs[i].setAttribute('decoding', 'async');
+                }
+            }
+        }
+        var pv = document.getElementById('preview');
+        if (pv && window.MutationObserver) {
+            new MutationObserver(function() { lazyImgs(pv); })
+                .observe(pv, { childList: true, subtree: true });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var c = document.querySelector('.content');
+            if (c) lazyImgs(c);
+        });
+    })();
+    </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="loading">
@@ -72,7 +96,7 @@
 		
             <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
         
-            <a href="/img/wechat.jpg" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+            <a href="/img/wechat.webp" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
         
             <a href="mailto:cyanogencid@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
         
@@ -92,7 +116,7 @@
 <div id="screen">
     <div id="mark">
         <div class="layer" data-depth="0.4">
-            <img src="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
+            <img src="/img/welcome-cover.webp" id="cover" crossorigin="anonymous" width="1920" height="1080">
         </div>
     </div>
     <div id="vibrant">
@@ -125,7 +149,7 @@
         
 <div class="post">
     <a href="/2022/01/05/dream2022/" title="梦2022">
-        <img src="/images/posts/dream2022.jpg" class="cover" width="680" height="440">
+        <img src="/images/posts/dream2022.webp" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>一月 05, 2022</p>
@@ -140,7 +164,7 @@
 
 <div class="post">
     <a href="/2021/03/13/dream2021/" title="梦2021">
-        <img src="/images/posts/dream2021.jpg" class="cover" width="680" height="440">
+        <img src="/images/posts/dream2021.webp" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>三月 13, 2021</p>
@@ -157,7 +181,7 @@
 
 <div class="post">
     <a href="/2020/01/07/dream2020/" title="梦2020">
-        <img src="/images/posts/dream2020.jpg" class="cover" width="680" height="440">
+        <img src="/images/posts/dream2020.webp" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>一月 07, 2020</p>
@@ -172,7 +196,7 @@
 
 <div class="post">
     <a href="/2019/01/19/dream2019/" title="梦2019">
-        <img src="/images/posts/dream2019.jpg" class="cover" width="680" height="440">
+        <img src="/images/posts/dream2019.webp" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>一月 19, 2019</p>
@@ -185,7 +209,7 @@
 
 <div class="post">
     <a href="/2018/01/05/dream2018/" title="梦2018">
-        <img src="/images/posts/dream2018.jpg" class="cover" width="680" height="440">
+        <img src="/images/posts/dream2018.webp" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>一月 05, 2018</p>
@@ -198,7 +222,7 @@
 
 <div class="post">
     <a href="/2017/11/18/dream2017/" title="梦2017">
-        <img src="/images/posts/dream2017.jpg" class="cover" width="680" height="440">
+        <img src="/images/posts/dream2017.webp" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>十一月 18, 2017</p>

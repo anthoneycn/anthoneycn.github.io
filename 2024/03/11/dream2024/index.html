@@ -65,6 +65,30 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     <script>window.searchDbPath = "/search.xml";</script>
+    <script>
+    /* 文章内图片懒加载：打开文章时动态注入的图才标记 lazy，首页首屏图不受影响 */
+    (function() {
+        function lazyImgs(root) {
+            var imgs = root.querySelectorAll('img');
+            for (var i = 0; i < imgs.length; i++) {
+                if (!imgs[i].getAttribute('data-lz')) {
+                    imgs[i].setAttribute('data-lz', '1');
+                    imgs[i].setAttribute('loading', 'lazy');
+                    imgs[i].setAttribute('decoding', 'async');
+                }
+            }
+        }
+        var pv = document.getElementById('preview');
+        if (pv && window.MutationObserver) {
+            new MutationObserver(function() { lazyImgs(pv); })
+                .observe(pv, { childList: true, subtree: true });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var c = document.querySelector('.content');
+            if (c) lazyImgs(c);
+        });
+    })();
+    </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="loading">

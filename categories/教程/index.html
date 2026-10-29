@@ -35,6 +35,30 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     <script>window.searchDbPath = "/search.xml";</script>
+    <script>
+    /* 文章内图片懒加载：打开文章时动态注入的图才标记 lazy，首页首屏图不受影响 */
+    (function() {
+        function lazyImgs(root) {
+            var imgs = root.querySelectorAll('img');
+            for (var i = 0; i < imgs.length; i++) {
+                if (!imgs[i].getAttribute('data-lz')) {
+                    imgs[i].setAttribute('data-lz', '1');
+                    imgs[i].setAttribute('loading', 'lazy');
+                    imgs[i].setAttribute('decoding', 'async');
+                }
+            }
+        }
+        var pv = document.getElementById('preview');
+        if (pv && window.MutationObserver) {
+            new MutationObserver(function() { lazyImgs(pv); })
+                .observe(pv, { childList: true, subtree: true });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var c = document.querySelector('.content');
+            if (c) lazyImgs(c);
+        });
+    })();
+    </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="loading">
@@ -72,7 +96,7 @@
 		
             <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
         
-            <a href="/img/wechat.jpg" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+            <a href="/img/wechat.webp" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
         
             <a href="mailto:cyanogencid@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
         
@@ -92,7 +116,7 @@
 <div id="screen">
     <div id="mark">
         <div class="layer" data-depth="0.4">
-            <img src="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
+            <img src="/img/welcome-cover.webp" id="cover" crossorigin="anonymous" width="1920" height="1080">
         </div>
     </div>
     <div id="vibrant">
@@ -122,7 +146,7 @@
         
 <div class="post">
     <a href="/2017/08/22/%E7%BB%99%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%90%8C%E8%90%8C%E7%9A%84%E5%8F%8C%E6%A0%87%E9%A2%98/" title="给自己的博客添加萌萌的双标题~">
-        <img src="/images/posts/double-title.jpg" class="cover" width="680" height="440">
+        <img src="/images/posts/double-title.webp" class="cover" width="680" height="440">
     </a>
     <div class="else">
         <p>八月 22, 2017</p>
