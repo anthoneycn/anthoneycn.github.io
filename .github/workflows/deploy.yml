@@ -20,10 +20,10 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Restore full theme (diaspora)
+      - name: Restore full theme (diaspora) + apply custom overrides
         run: |
-          git clone --depth 1 https://github.com/Fechin/hexo-theme-diaspora.git /tmp/diaspora
-          cp -r /tmp/diaspora/. themes/diaspora/
+          git clone --depth 1 https://github.com/Fechin/hexo-theme-diaspora.git themes/diaspora
+          cp -r theme-overrides/diaspora/. themes/diaspora/
 
       - name: Install dependencies
         run: npm ci
