@@ -1,8 +1,9 @@
 /* anthoney's blog 自定义样式：SVG 艺术字 logo（矢量缩放，全设备清晰） */
 .image-logo {
-  width: 180px;
-  height: 34px;
+  width: 200px;
+  height: 38px;
   background-size: contain;
+  -webkit-mask-box-image: none;
   -webkit-mask-image: url("/img/logo.svg");
   mask-image: url("/img/logo.svg");
   -webkit-mask-size: contain;
@@ -14,5 +15,5 @@
 }
 
 @media screen and (max-width: 580px) {
-  .image-logo { width: 138px; height: 26px; }
+  .image-logo { width: 150px; height: 28px; }
 }
