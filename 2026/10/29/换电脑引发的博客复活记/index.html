@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>换电脑引发的博客复活记——从源文件丢失到 Cloudflare 重生 - anthoney&#39;s</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="
+八年老博客，换了一台电脑，差点连根拔起。折腾了三天，顺手把多年的顽疾治好了。记录一下，也给同样用 Hexo + GitHub Pages 的朋友避避坑。
+
+事故：源文件全丢了我的这台新电脑上什么都,"> 
+    <meta name="author" content="anthoney"> 
+    <link rel="alternative" href="atom.xml" title="anthoney&#39;s" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="换电脑引发的博客复活记——从源文件丢失到 Cloudflare 重生 - anthoney&#39;s"/>
+    <meta name="twitter:description" content="
+八年老博客，换了一台电脑，差点连根拔起。折腾了三天，顺手把多年的顽疾治好了。记录一下，也给同样用 Hexo + GitHub Pages 的朋友避避坑。
+
+事故：源文件全丢了我的这台新电脑上什么都,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="anthoney&#39;s"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="换电脑引发的博客复活记——从源文件丢失到 Cloudflare 重生 - anthoney&#39;s"/>
+    <meta property="og:description" content="
+八年老博客，换了一台电脑，差点连根拔起。折腾了三天，顺手把多年的顽疾治好了。记录一下，也给同样用 Hexo + GitHub Pages 的朋友避避坑。
+
+事故：源文件全丢了我的这台新电脑上什么都,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">anthoney&#39;s</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://anthoney.cn"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">换电脑引发的博客复活记——从源文件丢失到 Cloudflare 重生</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">换电脑引发的博客复活记——从源文件丢失到 Cloudflare 重生</h1>
+        <div class="stuff">
+            <span>十月 29, 2026</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Cloudflare/" rel="tag">Cloudflare</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <blockquote>
+<p>八年老博客，换了一台电脑，差点连根拔起。折腾了三天，顺手把多年的顽疾治好了。记录一下，也给同样用 Hexo + GitHub Pages 的朋友避避坑。</p>
+</blockquote>
+<h2 id="事故：源文件全丢了"><a href="#事故：源文件全丢了" class="headerlink" title="事故：源文件全丢了"></a>事故：源文件全丢了</h2><p>我的这台新电脑上什么都没有——旧电脑上的 Hexo 工程、文章 Markdown 源文件、主题配置，全在旧机器上，没备份。</p>
+<p>唯一还活着的是线上的 <code>anthoney.cn</code>，托管在 GitHub Pages 上。也就是说：<strong>网站能看，但”源”没了</strong>。想改一个字都没法改。</p>
+<h2 id="第一步：从静态站里”考古”出源文件"><a href="#第一步：从静态站里”考古”出源文件" class="headerlink" title="第一步：从静态站里”考古”出源文件"></a>第一步：从静态站里”考古”出源文件</h2><p>好在 GitHub Pages 的部署仓库（<code>anthoneycn.github.io</code>）里存着生成的 HTML。思路就是反向工程：</p>
+<ol>
+<li>从部署仓库的历史提交里，把 16 个有差异的页面逐一找回（中间还顺手修正了一个老 bug：整站共用的 <code>diaspora.js</code> 被我误分成了两份）；</li>
+<li>从 HTML 把 9 篇文章的 Markdown 源文件提取重建，front-matter 从页面元数据还原；</li>
+<li>照主题 diaspora + Hexo 6.3.0 重新搭工程、装依赖、对配置，本地 <code>hexo server</code> 跑起来和线上逐字节比对。</li>
+</ol>
+<p>到这里，博客在本地”复活”了。</p>
+<h2 id="第二步：治老病——国内访问慢"><a href="#第二步：治老病——国内访问慢" class="headerlink" title="第二步：治老病——国内访问慢"></a>第二步：治老病——国内访问慢</h2><p>博客能改了，但老毛病还在：国内打开要 4~20 秒，偶尔直接卡死。</p>
+<p>排查下来原因很简单：GitHub Pages 只有 4 个官方 IP，其中两个在国内<strong>完全不通</strong>，而域名解析恰好押在不稳的那几条线上。网站本身才 12 KB，根本不关页面的事。</p>
+<p>顺手做了两个轻量化优化：</p>
+<ul>
+<li>把主题里引用的 Google Fonts 全部删掉（国内根本加载不出来，纯阻塞）；</li>
+<li>把 131 KB 的微信二维码图压到 57 KB。</li>
+</ul>
+<p>根治的方案选了 <strong>Cloudflare 免费代理</strong>：域名 NS 迁过去之后，全球 Anycast 节点接管访问，源站 IP 被完全隐藏，不再单点押注。</p>
+<h2 id="第三步：一个字母引发的-24-小时故障"><a href="#第三步：一个字母引发的-24-小时故障" class="headerlink" title="第三步：一个字母引发的 24 小时故障"></a>第三步：一个字母引发的 24 小时故障</h2><p>这是本次最哭笑不得的教训，单独说说。</p>
+<p>Cloudflare 添加站点时，我把 **<code>anthoney.cn</code> 少打了个 <code>y</code>**，加成了 <code>anthone.cn</code>（一个我早年手滑注册的错别字域名，DNS 还挂在阿里云上，里面全是欠费残留记录）。</p>
+<p>于是：</p>
+<ul>
+<li>新网那边改 NS，改的是正确的 <code>anthoney.cn</code>，指向 Cloudflare 给我分配的两个 NS；</li>
+<li>但 Cloudflare 里挂着的 zone 是错的 <code>anthone.cn</code>，永远等不到它期望的 NS 匹配；</li>
+<li>结果正确域名在全球解析里变成 <strong>REFUSED</strong>——<code>anthoney.cn</code> 变成了解析黑洞。</li>
+</ul>
+<p>因为 WHOIS 数据更新很快，新网后台看起来一切正常，Cloudflare 却一直”等待名称服务器传播”。直到后来用 API 查 zone 状态，才一眼看穿域名对不上。</p>
+<p><strong>教训：排查”为什么没生效”类问题时，先核对双方嘴里说的是不是同一个东西。</strong></p>
+<p>删掉错域名、重新添加 <code>anthoney.cn</code>、NS 改为一对新分配的地址后，几分钟就激活了。证书自动签发，国内直连从 4<del>20 秒降到 1</del>3 秒。</p>
+<h2 id="第四步：解锁”随时随地写博客”"><a href="#第四步：解锁”随时随地写博客”" class="headerlink" title="第四步：解锁”随时随地写博客”"></a>第四步：解锁”随时随地写博客”</h2><p>最后顺手升级了写作体验。以前的流程：必须在装好了环境的电脑上，敲命令生成、推送。现在：</p>
+<ul>
+<li>博客源文件放在部署仓库的 <code>hexo</code> 分支；</li>
+<li>任何设备的浏览器打开 GitHub，按 <code>.</code> 进网页版编辑器就能写文章；</li>
+<li>提交（Commit）即发布：GitHub Actions 自动装依赖、拉主题、生成静态页、推回 <code>main</code> 分支，Cloudflare 全球刷新。</li>
+</ul>
+<p>本地环境照常用，两条路殊途同归。</p>
+<h2 id="一些实用信息"><a href="#一些实用信息" class="headerlink" title="一些实用信息"></a>一些实用信息</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名</td>
+<td><code>anthoney.cn</code>（新网注册）</td>
+</tr>
+<tr>
+<td>解析</td>
+<td>Cloudflare NS，A 记录走橙色代理云</td>
+</tr>
+<tr>
+<td>构建</td>
+<td>GitHub Actions（推送 <code>hexo</code> 分支自动触发）</td>
+</tr>
+<tr>
+<td>主题</td>
+<td>diaspora，上游拉取 + 独立 override 目录打补丁</td>
+</tr>
+<tr>
+<td>备份</td>
+<td>源文件即 <code>hexo</code> 分支本身，天然版本化</td>
+</tr>
+</tbody></table>
+<p>如果你也是 Hexo + GitHub Pages 且国内访问慢，这套组合（Cloudflare + Actions）免费、无需备案，值得一试。唯一要注意的：<strong>添加域名的时候，别少打字</strong>。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
